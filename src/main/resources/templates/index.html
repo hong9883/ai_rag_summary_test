@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>의약품 RAG 요약 프로그램</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>의약품 RAG 요약 프로그램</h1>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="/">홈</a></li>
+                <li><a href="/upload">문서 업로드</a></li>
+                <li><a href="/query">질문하기</a></li>
+                <li><a href="/history">질문 이력</a></li>
+                <li><a href="/statistics">통계</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h2>환영합니다</h2>
+            <p>의약품 RAG(Retrieval-Augmented Generation) 요약 프로그램입니다.</p>
+            <p>이 시스템은 의약품 관련 문서를 업로드하고, 문서 내용에 대해 질문하면 AI가 답변을 제공합니다.</p>
+        </div>
+
+        <div class="card">
+            <h2>주요 기능</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>📄</h3>
+                    <p>문서 업로드</p>
+                    <small>PDF, TXT, DOC, HWP</small>
+                </div>
+                <div class="stat-card">
+                    <h3>❓</h3>
+                    <p>질문 & 답변</p>
+                    <small>7가지 프롬프트 방식</small>
+                </div>
+                <div class="stat-card">
+                    <h3>📊</h3>
+                    <p>이력 관리</p>
+                    <small>질문 이력 조회</small>
+                </div>
+                <div class="stat-card">
+                    <h3>📈</h3>
+                    <p>통계</p>
+                    <small>사용 현황 분석</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>사용 방법</h2>
+            <ol>
+                <li><strong>문서 업로드:</strong> 의약품 관련 문서를 업로드합니다.</li>
+                <li><strong>질문하기:</strong> 업로드한 문서에 대해 질문합니다.</li>
+                <li><strong>프롬프트 선택:</strong> 답변 방식을 선택합니다 (기본, 구조화, 간단, 상세, 포인트, 사실 확인, 단계별 사고).</li>
+                <li><strong>답변 확인:</strong> AI가 생성한 답변을 확인합니다.</li>
+                <li><strong>이력 확인:</strong> 과거 질문과 답변을 확인합니다.</li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h2>기술 스택</h2>
+            <ul>
+                <li><strong>Backend:</strong> Spring Boot, Java</li>
+                <li><strong>Frontend:</strong> HTML, CSS, JavaScript</li>
+                <li><strong>LLM:</strong> Ollama (로컬)</li>
+                <li><strong>Vector DB:</strong> Chroma</li>
+                <li><strong>Search:</strong> OpenSearch</li>
+                <li><strong>Database:</strong> MySQL</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

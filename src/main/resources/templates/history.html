@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>질문 이력 - 의약품 RAG</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>의약품 RAG 요약 프로그램</h1>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="/">홈</a></li>
+                <li><a href="/upload">문서 업로드</a></li>
+                <li><a href="/query">질문하기</a></li>
+                <li><a href="/history">질문 이력</a></li>
+                <li><a href="/statistics">통계</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h2>질문 이력</h2>
+            <button class="btn btn-success" onclick="loadHistory()">새로고침</button>
+
+            <table id="historyTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>질문</th>
+                        <th>프롬프트 방식</th>
+                        <th>응답 시간</th>
+                        <th>관련 문서</th>
+                        <th>날짜</th>
+                        <th>작업</th>
+                    </tr>
+                </thead>
+                <tbody id="historyBody">
+                </tbody>
+            </table>
+
+            <div class="pagination" id="pagination">
+                <button class="btn btn-primary" onclick="previousPage()">이전</button>
+                <span id="pageInfo" style="margin: 0 15px;"></span>
+                <button class="btn btn-primary" onclick="nextPage()">다음</button>
+            </div>
+        </div>
+
+        <div id="detailContainer" style="display: none;">
+            <div class="card">
+                <h2>상세 정보</h2>
+                <div class="answer-box">
+                    <h3>질문</h3>
+                    <p id="detailQuestion"></p>
+
+                    <h3 style="margin-top: 20px;">답변</h3>
+                    <div id="detailAnswer"></div>
+
+                    <h3 style="margin-top: 20px;">검색된 컨텍스트</h3>
+                    <pre id="detailContext" style="background: #f8f9fa; padding: 15px; border-radius: 4px; overflow-x: auto;"></pre>
+
+                    <div class="metadata">
+                        <strong>프롬프트 방식:</strong> <span id="detailPromptType"></span><br>
+                        <strong>응답 시간:</strong> <span id="detailResponseTime"></span>ms<br>
+                        <strong>관련 문서 수:</strong> <span id="detailRelevantDocs"></span>개<br>
+                        <strong>생성 시간:</strong> <span id="detailCreatedAt"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/history.js"></script>
+</body>
+</html>

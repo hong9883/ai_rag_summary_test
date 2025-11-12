@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>질문하기 - 의약품 RAG</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>의약품 RAG 요약 프로그램</h1>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="/">홈</a></li>
+                <li><a href="/upload">문서 업로드</a></li>
+                <li><a href="/query">질문하기</a></li>
+                <li><a href="/history">질문 이력</a></li>
+                <li><a href="/statistics">통계</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h2>질문하기</h2>
+            <div id="alertContainer"></div>
+
+            <form id="queryForm">
+                <div class="form-group">
+                    <label for="question">질문</label>
+                    <textarea id="question" name="question" placeholder="의약품에 대한 질문을 입력하세요..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="promptType">프롬프트 방식</label>
+                    <select id="promptType" name="promptType" required>
+                        <option value="BASIC">기본 - 명확한 답변</option>
+                        <option value="STRUCTURED">구조화 - 체계적인 답변</option>
+                        <option value="SIMPLE">간단 - 간단명료한 답변</option>
+                        <option value="DETAILED">상세 - 포괄적인 답변</option>
+                        <option value="POINTS">포인트 - 핵심 정리</option>
+                        <option value="FACT_CHECK">사실 확인 - 사실 여부 검증</option>
+                        <option value="STEP_BY_STEP">단계별 사고 - 단계별 분석</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="topK">검색할 관련 문서 수</label>
+                    <input type="number" id="topK" name="topK" value="5" min="1" max="10">
+                </div>
+
+                <button type="submit" class="btn btn-primary">질문하기</button>
+            </form>
+
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>답변을 생성하는 중입니다...</p>
+            </div>
+        </div>
+
+        <div id="answerContainer" style="display: none;">
+            <div class="card">
+                <h2>답변</h2>
+                <div class="answer-box">
+                    <h3>질문</h3>
+                    <p id="answerQuestion"></p>
+
+                    <h3 style="margin-top: 20px;">답변</h3>
+                    <div id="answerText"></div>
+
+                    <div class="sources" id="sourcesContainer" style="display: none;">
+                        <h4>참고 문서</h4>
+                        <div id="sourcesList"></div>
+                    </div>
+
+                    <div class="metadata">
+                        <strong>프롬프트 방식:</strong> <span id="answerPromptType"></span><br>
+                        <strong>응답 시간:</strong> <span id="answerResponseTime"></span>ms<br>
+                        <strong>관련 문서 수:</strong> <span id="answerRelevantDocs"></span>개
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/query.js"></script>
+</body>
+</html>

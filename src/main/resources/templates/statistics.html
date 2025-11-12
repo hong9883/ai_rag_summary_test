@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>통계 - 의약품 RAG</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>의약품 RAG 요약 프로그램</h1>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="/">홈</a></li>
+                <li><a href="/upload">문서 업로드</a></li>
+                <li><a href="/query">질문하기</a></li>
+                <li><a href="/history">질문 이력</a></li>
+                <li><a href="/statistics">통계</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h2>벡터 DB 통계</h2>
+            <button class="btn btn-success" onclick="loadStatistics()">새로고침</button>
+
+            <div class="stats-grid" style="margin-top: 20px;">
+                <div class="stat-card">
+                    <h3 id="totalDocuments">-</h3>
+                    <p>총 문서 수</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="totalChunks">-</h3>
+                    <p>총 청크 수</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="totalVectorSize">-</h3>
+                    <p>벡터 DB 크기</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 30px;">파일 타입별 문서 수</h3>
+            <table id="documentsByTypeTable">
+                <thead>
+                    <tr>
+                        <th>파일 타입</th>
+                        <th>문서 수</th>
+                    </tr>
+                </thead>
+                <tbody id="documentsByTypeBody">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>프롬프트 사용 통계</h2>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 id="totalQueries">-</h3>
+                    <p>총 질문 수</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 30px;">프롬프트 방식별 사용 현황</h3>
+            <table id="promptUsageTable">
+                <thead>
+                    <tr>
+                        <th>프롬프트 방식</th>
+                        <th>사용 횟수</th>
+                        <th>평균 응답 시간</th>
+                    </tr>
+                </thead>
+                <tbody id="promptUsageBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="/js/statistics.js"></script>
+</body>
+</html>

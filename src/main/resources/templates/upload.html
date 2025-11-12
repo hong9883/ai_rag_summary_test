@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문서 업로드 - 의약품 RAG</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>의약품 RAG 요약 프로그램</h1>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="/">홈</a></li>
+                <li><a href="/upload">문서 업로드</a></li>
+                <li><a href="/query">질문하기</a></li>
+                <li><a href="/history">질문 이력</a></li>
+                <li><a href="/statistics">통계</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h2>문서 업로드</h2>
+            <div id="alertContainer"></div>
+
+            <form id="uploadForm">
+                <div class="form-group">
+                    <label for="file">파일 선택 (PDF, TXT, DOC, DOCX, HWP)</label>
+                    <input type="file" id="file" name="file" accept=".pdf,.txt,.doc,.docx,.hwp" required>
+                </div>
+                <button type="submit" class="btn btn-primary">업로드</button>
+            </form>
+
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>파일을 처리하는 중입니다...</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>업로드된 문서 목록</h2>
+            <button class="btn btn-success" onclick="loadDocuments()">새로고침</button>
+            <table id="documentsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>파일명</th>
+                        <th>파일 타입</th>
+                        <th>파일 크기</th>
+                        <th>청크 수</th>
+                        <th>업로드 날짜</th>
+                        <th>작업</th>
+                    </tr>
+                </thead>
+                <tbody id="documentsBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="/js/upload.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+spring:
+  application:
+    name: medicine-rag-summary
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/medicine_rag?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+      file-size-threshold: 2KB
+
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+# Ollama 설정
+ollama:
+  base-url: http://localhost:11434
+  model: llama2
+  timeout: 300
+
+# Chroma Vector DB 설정
+chroma:
+  base-url: http://localhost:8000
+  collection-name: medicine_documents
+  timeout: 60
+
+# OpenSearch 설정
+opensearch:
+  host: localhost
+  port: 9200
+  scheme: http
+  index-name: medicine_index
+
+# 파일 업로드 경로
+file:
+  upload-dir: ./uploads
+  temp-dir: ./temp
+
+logging:
+  level:
+    com.medicine.rag: DEBUG
+    org.springframework.web: INFO
+    org.hibernate: INFO
